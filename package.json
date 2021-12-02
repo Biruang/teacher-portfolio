@@ -33,6 +33,7 @@
     "autoprefixer": "9.8.6",
     "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^10.0.0",
     "css-loader": "^6.5.1",
     "express": "^4.17.1",
     "express-favicon": "^2.0.1",

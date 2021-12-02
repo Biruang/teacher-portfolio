@@ -31,6 +31,10 @@ module.exports = (env) => {
         },
       ],
     },
+    static: {
+      test: /\.(webp|jpg|png|gif|woff|woff2|eot|ttf|otf|svg)$/,
+      type: 'asset/resource',
+    },
   }
 
   const resolve = {
