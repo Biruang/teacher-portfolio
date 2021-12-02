@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackNotifierPlugin = require('webpack-notifier')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpackConfig = require('./webpack.config')
 
 module.exports = (env, argv) => {
@@ -42,10 +43,21 @@ module.exports = (env, argv) => {
     },
     resolve: config.resolve,
     module: {
-      rules: [config.modules.js, config.modules.css],
+      rules: [config.modules.js, config.modules.css, config.modules.static],
     },
     plugins: [
       new CleanWebpackPlugin(),
+      new CopyWebpackPlugin({
+        patterns: [
+          {
+            from: './public',
+            to: './',
+            globOptions: {
+              ignore: ['**/index.html'],
+            },
+          },
+        ],
+      }),
       new HtmlWebpackPlugin({
         template: './public/index.html',
       }),
